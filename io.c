@@ -10,7 +10,15 @@
 
 /* Exported functions declaration ------------ */
 
-
+/**
+ * @brief The function for reading string from standard input.
+ *
+ * If the string is correctly read, the real length of the string is written back to the "len" parameter.
+ * All remaining strings (another lines) to be flushed.
+ * @param inOutString Pointer to a variable where the string should be stored.
+ * @param len IN: The max length of the input array OUT: the real length of already read text.
+ * @return Status of the reading process
+ */
 IO_RES IO_getLine(char * const inOutString, int * const len){
     if ((inOutString == NULL) || (len == NULL) || ( *len == 0)){
         return  IO_ARGS_ERROR;
@@ -23,6 +31,12 @@ IO_RES IO_getLine(char * const inOutString, int * const len){
     fflush(stdin);
     return IO_OK;
 }
+
+/**
+ * @brief The function returns one character read from the input.
+ * @param value The the character read from the input.
+ * @return Status of the reading process
+ */
 IO_RES IO_getChar(char * const value){
     if (value == NULL){
         return IO_ARGS_ERROR;
@@ -37,6 +51,12 @@ IO_RES IO_getChar(char * const value){
     return IO_STREAM_ERROR;
 }
 
+
+/**
+ * @brief Function read one line from the standard input and trasfer it into the integer value.
+ * @param value The read value
+ * @return Status of the reading process
+ */
 IO_RES IO_getInt(int * const value){
     char string[BUFFER_SIZE];
     int len = BUFFER_SIZE;
